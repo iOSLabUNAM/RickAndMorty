@@ -9,15 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack{
-            ZStack {
-                Image(systemName: "circle")
-                    .font(.system(size: 72, weight: .light))
-                Image(systemName: "bus")
-                    .font(.system(size: 40))
-            }.foregroundColor(.blue)
-            Text("Hello SwiftUI")
-                .font(.system(size: 24, weight: .bold))
+        TabView() {
+            CharacterListView()
+                .tabItem {
+                    Image(systemName: "mustache")
+                    Text("Characters")
+                }
+                .tag(1)
+            LocationListView()
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Locations")
+                }
+                .tag(2)
+            EpisodeListView()
+                .tabItem {
+                    Image(systemName: "film")
+                    Text("Episodes")
+                }
+                .tag(3)
         }
     }
 }
