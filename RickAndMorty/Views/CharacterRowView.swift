@@ -24,35 +24,32 @@ struct CharacterRowView: View {
                     #endif
                     SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
                 @unknown default:
-                    fatalError()
+                    SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
                 }
             }
             VStack(alignment: .leading) {
                 Text(character.name)
-                    .font(.title2)
+                    .font(.headline)
                     .fontWeight(.bold)
-                
                 HStack() {
-                    Text(character.status)
+                    Text(character.status.rawValue)
+                    Circle()
+                        .foregroundColor(statusColor(character.status))
+                        .frame(width: 8)
                     Text(character.species)
                 }
-                .font(.system(size: 22, weight: .light, design: .rounded))
+                .font(.subheadline)
             }
         }
+        .cornerRadius(10)
     }
-}
-
-struct SquareImage: View {
-    let image: Image
-    let size: CGFloat
-    let contentMode: ContentMode
     
-    var body: some View {
-        image
-            .resizable()
-            .aspectRatio(contentMode: contentMode)
-            .frame(width: size, height: size, alignment: .center)
-            .clipped()
+    func statusColor(_ status: Character.Status) -> Color {
+        switch status {
+        case .alive: return .green
+        case .dead: return .black
+        default: return .gray
+        }
     }
 }
 

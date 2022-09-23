@@ -8,16 +8,28 @@
 import SwiftUI
 
 struct CharacterListView: View {
-    var characters: [Character] = []
+    @StateObject var viewModel = CharacterListViewModel()
     var body: some View {
-        List(characters) { character in
-            CharacterRowView(character: character)
+        NavigationView {
+            List(viewModel.characters) { character in
+                CharacterRowView(character: character)
+                    .listRowSeparator(.hidden)
+                    .onAppear {
+                        if viewModel.isLast(character: character) {
+                            Task { await viewModel.load() }
+                        }
+                    }
+            }
+            .listStyle(.plain)
+            .navigationTitle("Characters")
+        }.task {
+            await viewModel.load()
         }
     }
 }
 
 struct CharacterListView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterListView(characters: TestData().characters)
+        CharacterListView()
     }
 }

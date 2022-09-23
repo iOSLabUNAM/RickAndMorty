@@ -14,7 +14,7 @@ struct TestData {
             id: 1,
             name: "Rick Sanchez",
             imageUrlString: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-            status: "Alive",
+            status: Character.Status.alive,
             species: "Human",
             gender: "Male",
             type: ""
@@ -23,7 +23,7 @@ struct TestData {
             id: 2,
             name: "Morty Smith",
             imageUrlString: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-            status: "Alive",
+            status: Character.Status.alive,
             species: "Human",
             gender: "Male",
             type: ""
