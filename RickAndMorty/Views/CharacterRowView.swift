@@ -11,7 +11,7 @@ struct CharacterRowView: View {
     let character: Character
     var body: some View {
         HStack {
-            AsyncImage(url: character.imageUrl()) { phase in
+            CachedAsyncImage(url: character.imageUrl()) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
