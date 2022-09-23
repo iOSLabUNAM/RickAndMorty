@@ -25,12 +25,12 @@ struct PaginatedListEndpoint<T> where T: Codable {
         dec.keyDecodingStrategy = .convertFromSnakeCase
         return dec
     }()
-    
+
     init(client: Amaca.Client, route: String) {
         self.client = client
         self.route = route
     }
-    
+
     func show(page: Int? = nil) async throws -> PaginatedList<T>? {
         let data = try await client.get(path: route, queryItems: ["page": "\(page ?? 1)"])
         guard let data = data else { return nil }

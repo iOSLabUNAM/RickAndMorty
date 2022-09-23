@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView() {
+        TabView {
             CharacterListView()
                 .tabItem {
                     Image(systemName: "mustache")

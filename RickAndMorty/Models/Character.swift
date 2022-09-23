@@ -29,11 +29,11 @@ struct Character: Codable, Identifiable {
 //    let episode: [String]
 //    let url: String
 //    let created: String
-    
+
     func imageUrl() -> URL? {
        return URL(string: imageUrlString)
     }
-    
+
     private enum CodingKeys: String, CodingKey {
         case id
         case name

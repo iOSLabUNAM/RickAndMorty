@@ -11,7 +11,7 @@ struct SquareImage: View {
     let image: Image
     let size: CGFloat
     let contentMode: ContentMode
-    
+
     var body: some View {
         image
             .resizable()

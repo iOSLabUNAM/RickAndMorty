@@ -53,7 +53,7 @@ struct TestData {
             name: "Worldender's lair",
             dimension: "unknown",
             type: "Planet"
-        ),
+        )
     ]
     let episodes = [
         Episode(
@@ -79,7 +79,7 @@ struct TestData {
             name: "M. Night Shaym-Aliens!",
             airDate: "January 13, 2014",
             episode: "S01E04"
-        ),
+        )
     ]
 }
 #endif

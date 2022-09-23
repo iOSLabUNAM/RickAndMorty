@@ -31,7 +31,7 @@ struct CharacterRowView: View {
                 Text(character.name)
                     .font(.headline)
                     .fontWeight(.bold)
-                HStack() {
+                HStack {
                     Text(character.status.rawValue)
                     Circle()
                         .foregroundColor(statusColor(character.status))
@@ -43,7 +43,7 @@ struct CharacterRowView: View {
         }
         .cornerRadius(10)
     }
-    
+
     func statusColor(_ status: Character.Status) -> Color {
         switch status {
         case .alive: return .green
