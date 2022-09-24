@@ -12,6 +12,13 @@ struct Episode: Codable, Identifiable {
     let name: String
     let airDate: String
     let episode: String
+    var imageUrlString: String?
 //    let created: String
 //    let characters: [String]
+}
+
+extension Episode: Equatable {
+    static func == (lhs: Episode, rhs: Episode) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

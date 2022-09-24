@@ -19,9 +19,6 @@ struct CharacterRowView: View {
                 case .success(let image):
                     SquareImage(image: image, size: 120, contentMode: .fill)
                 case .failure(let error):
-                    #if DEBUG
-                    let _ = debugPrint(error)
-                    #endif
                     SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
                 @unknown default:
                     SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)

@@ -17,7 +17,9 @@ struct TestData {
             status: Character.Status.alive,
             species: "Human",
             gender: "Male",
-            type: ""
+            type: "",
+            location: nil,
+            origin: nil
         ),
         Character(
             id: 2,
@@ -26,7 +28,9 @@ struct TestData {
             status: Character.Status.alive,
             species: "Human",
             gender: "Male",
-            type: ""
+            type: "",
+            location: nil,
+            origin: nil
         )
     ]
     let locations = [

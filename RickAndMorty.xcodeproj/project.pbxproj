@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30010EE628DE83FB00AF9383 /* EpisodeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30010EE528DE83FB00AF9383 /* EpisodeListViewModel.swift */; };
+		30010EE828DE878400AF9383 /* TvMazeEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30010EE728DE878400AF9383 /* TvMazeEpisode.swift */; };
+		30023A4928DE764800A5CD2C /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30023A4828DE764800A5CD2C /* CharacterDetail.swift */; };
 		304C07B828C26E710025529B /* RickAndMortyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304C07B728C26E710025529B /* RickAndMortyApp.swift */; };
 		304C07BA28C26E710025529B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304C07B928C26E710025529B /* ContentView.swift */; };
 		304C07BC28C26E740025529B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304C07BB28C26E740025529B /* Assets.xcassets */; };
@@ -53,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30010EE528DE83FB00AF9383 /* EpisodeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeListViewModel.swift; sourceTree = "<group>"; };
+		30010EE728DE878400AF9383 /* TvMazeEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvMazeEpisode.swift; sourceTree = "<group>"; };
+		30023A4828DE764800A5CD2C /* CharacterDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetail.swift; sourceTree = "<group>"; };
 		304C07B428C26E710025529B /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		304C07B728C26E710025529B /* RickAndMortyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyApp.swift; sourceTree = "<group>"; };
 		304C07B928C26E710025529B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +117,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30010EE328DE83C600AF9383 /* Episodes */ = {
+			isa = PBXGroup;
+			children = (
+				30F87C1328CBF1E700157848 /* EpisodeListView.swift */,
+			);
+			path = Episodes;
+			sourceTree = "<group>";
+		};
+		30023A4728DE762400A5CD2C /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				30F87C0F28CBF19000157848 /* CharacterListView.swift */,
+				30F87C1E28CC028400157848 /* CharacterRowView.swift */,
+				30023A4828DE764800A5CD2C /* CharacterDetail.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
 		304C07AB28C26E710025529B = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +214,7 @@
 			children = (
 				3052053F28DA84B9001F99F7 /* CharacterListViewModel.swift */,
 				30ED036528DE68DB005948ED /* CachedAsyncImageViewModel.swift */,
+				30010EE528DE83FB00AF9383 /* EpisodeListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -207,11 +232,10 @@
 		30F87C0E28CBF17900157848 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				30010EE328DE83C600AF9383 /* Episodes */,
+				30023A4728DE762400A5CD2C /* Characters */,
 				30ED036328DE68BC005948ED /* CachedAsyncImage.swift */,
-				30F87C0F28CBF19000157848 /* CharacterListView.swift */,
 				30F87C1128CBF1B900157848 /* LocationListView.swift */,
-				30F87C1328CBF1E700157848 /* EpisodeListView.swift */,
-				30F87C1E28CC028400157848 /* CharacterRowView.swift */,
 				3052054328DB70AE001F99F7 /* SquareImage.swift */,
 			);
 			path = Views;
@@ -223,6 +247,7 @@
 				30F87C1628CBF58900157848 /* Character.swift */,
 				30F87C1828CBF85000157848 /* Location.swift */,
 				30F87C1A28CBF98700157848 /* Episode.swift */,
+				30010EE728DE878400AF9383 /* TvMazeEpisode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -372,7 +397,9 @@
 				30F87C1028CBF19000157848 /* CharacterListView.swift in Sources */,
 				30F87C1B28CBF98700157848 /* Episode.swift in Sources */,
 				30F87C1228CBF1B900157848 /* LocationListView.swift in Sources */,
+				30010EE628DE83FB00AF9383 /* EpisodeListViewModel.swift in Sources */,
 				3052054028DA84B9001F99F7 /* CharacterListViewModel.swift in Sources */,
+				30023A4928DE764800A5CD2C /* CharacterDetail.swift in Sources */,
 				30ED036428DE68BC005948ED /* CachedAsyncImage.swift in Sources */,
 				30F87C1428CBF1E700157848 /* EpisodeListView.swift in Sources */,
 				30ED036228DE687D005948ED /* StorageType.swift in Sources */,
@@ -381,6 +408,7 @@
 				304C07BA28C26E710025529B /* ContentView.swift in Sources */,
 				3052054228DA858D001F99F7 /* PaginatedIndexEndpoint.swift in Sources */,
 				304C07B828C26E710025529B /* RickAndMortyApp.swift in Sources */,
+				30010EE828DE878400AF9383 /* TvMazeEpisode.swift in Sources */,
 				30F87C1928CBF85000157848 /* Location.swift in Sources */,
 				305E707A28DE6735004AD856 /* Checksum.m in Sources */,
 				30F87C1F28CC028400157848 /* CharacterRowView.swift in Sources */,

@@ -12,13 +12,18 @@ struct CharacterListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.characters) { character in
-                CharacterRowView(character: character)
-                    .listRowSeparator(.hidden)
-                    .onAppear {
-                        if viewModel.isLast(character: character) {
-                            Task { await viewModel.load() }
+                NavigationLink {
+                    CharacterDetail(character: character)
+                } label: {
+                    CharacterRowView(character: character)
+                        .listRowSeparator(.hidden)
+                        .onAppear {
+                            if viewModel.isLast(character: character) {
+                                Task { await viewModel.load() }
+                            }
                         }
-                    }
+                }
+                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .navigationTitle("Characters")

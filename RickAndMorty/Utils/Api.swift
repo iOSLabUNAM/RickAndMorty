@@ -9,5 +9,5 @@ import Foundation
 
 struct Api {
     static let rickAndMorty = "https://rickandmortyapi.com/"
-    static let tvMaze = "https://api.tvmaze.com/shows/216/"
+    static let tvMaze = "https://api.tvmaze.com/"
 }

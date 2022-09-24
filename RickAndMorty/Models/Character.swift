@@ -13,10 +13,10 @@ struct Character: Codable, Identifiable {
         case dead = "Dead"
         case unknown = "unknown"
     }
-//    struct LocationUrl: Codable {
-//        let name: String?
-//        let url: String?
-//    }
+    struct LocationUrl: Codable {
+        let name: String?
+        let url: String?
+    }
     let id: Int
     let name: String
     let imageUrlString: String
@@ -24,8 +24,8 @@ struct Character: Codable, Identifiable {
     let species: String
     let gender: String
     let type: String
-//    let location: LocationUrl?
-//    let origin: LocationUrl?
+    let location: LocationUrl?
+    let origin: LocationUrl?
 //    let episode: [String]
 //    let url: String
 //    let created: String
@@ -42,6 +42,8 @@ struct Character: Codable, Identifiable {
         case species
         case gender
         case type
+        case location
+        case origin
     }
 }
 
