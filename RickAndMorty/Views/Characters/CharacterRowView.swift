@@ -18,9 +18,8 @@ struct CharacterRowView: View {
                         .frame(width: 120, height: 120, alignment: .center)
                 case .success(let image):
                     SquareImage(image: image, size: 120, contentMode: .fill)
-                case .failure(let error):
-                    SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
-                @unknown default:
+                        .cornerRadius(5)
+                default:
                     SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
                 }
             }
@@ -29,16 +28,14 @@ struct CharacterRowView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 HStack {
-                    Text(character.status.rawValue)
                     Circle()
                         .foregroundColor(statusColor(character.status))
-                        .frame(width: 8)
+                        .frame(width: 10)
                     Text(character.species)
                 }
                 .font(.subheadline)
             }
         }
-        .cornerRadius(10)
     }
 
     func statusColor(_ status: Character.Status) -> Color {

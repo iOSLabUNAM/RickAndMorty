@@ -7,15 +7,16 @@
 
 import Foundation
 
+struct UrlLocation: Codable {
+    let name: String?
+    let url: String?
+}
+
 struct Character: Codable, Identifiable {
     enum Status: String, Codable {
         case alive = "Alive"
         case dead = "Dead"
         case unknown = "unknown"
-    }
-    struct LocationUrl: Codable {
-        let name: String?
-        let url: String?
     }
     let id: Int
     let name: String
@@ -24,10 +25,10 @@ struct Character: Codable, Identifiable {
     let species: String
     let gender: String
     let type: String
-    let location: LocationUrl?
-    let origin: LocationUrl?
-//    let episode: [String]
-//    let url: String
+    let location: UrlLocation?
+    let origin: UrlLocation?
+    let episodes: [String]
+    let url: String
 //    let created: String
 
     func imageUrl() -> URL? {
@@ -42,8 +43,10 @@ struct Character: Codable, Identifiable {
         case species
         case gender
         case type
+        case episodes = "episode"
         case location
         case origin
+        case url
     }
 }
 

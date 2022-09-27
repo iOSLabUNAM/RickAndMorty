@@ -25,7 +25,6 @@ struct CharacterListView: View {
                 }
                 .listRowSeparator(.hidden)
             }
-            .listStyle(.plain)
             .navigationTitle("Characters")
         }.task {
             await viewModel.load()

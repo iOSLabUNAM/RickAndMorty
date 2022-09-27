@@ -17,9 +17,11 @@ struct TestData {
             status: Character.Status.alive,
             species: "Human",
             gender: "Male",
-            type: "",
-            location: nil,
-            origin: nil
+            type: "lorem ipsum dolor",
+            location: UrlLocation(name: "Location", url: "https://example.com/something.png"),
+            origin: UrlLocation(name: "Location", url: "https://example.com/something.png"),
+            episodes: [""],
+            url: ""
         ),
         Character(
             id: 2,
@@ -29,8 +31,10 @@ struct TestData {
             species: "Human",
             gender: "Male",
             type: "",
-            location: nil,
-            origin: nil
+            location: UrlLocation(name: "Location", url: "https://example.com/something.png"),
+            origin: UrlLocation(name: "Location", url: "https://example.com/something.png"),
+            episodes: [""],
+            url: ""
         )
     ]
     let locations = [
