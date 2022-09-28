@@ -7,8 +7,8 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
-@MainActor
 class CachedAsyncImageViewModel: ObservableObject {
     enum CachedAsyncImageError: Error {
         case loading(String)
@@ -21,27 +21,38 @@ class CachedAsyncImageViewModel: ObservableObject {
         guard let url = url else { return "" }
         return Checksum.sha1(url.absoluteString)
     }()
+    var cancellableSet = Set<AnyCancellable>()
 
     init(url: URL?) {
         self.url = url
         self.phase = .empty
+        load()
     }
 
-    func load() async {
+    private func load() {
         guard let url = url else { return }
         if let data = manager[urlHash],
            let image = image(from: data) {
             self.phase = .success(image)
             return
         }
-        guard let (data, _) = try? await URLSession.shared.data(from: url),
-              let image = image(from: data) else {
-            self.phase = .failure(CachedAsyncImageError.loading("Unable to fetch image"))
-                  return
-        }
-
-        self.phase = .success(image)
-        manager[urlHash] = data
+        
+        URLSession
+            .shared
+            .dataTaskPublisher(for: url)
+            .map(\.data)
+            .receive(on: RunLoop.main)
+            .sink {
+                print("Completed: \($0)")
+            } receiveValue: { data in
+                if let image = self.image(from: data) {
+                    self.phase = .success(image)
+                    self.manager[self.urlHash] = data
+                } else {
+                    self.phase = .failure(CachedAsyncImageError.loading("Unable to load image"))
+                }
+            }
+            .store(in: &cancellableSet)
     }
 
     private func image(from data: Data) -> Image? {

@@ -14,8 +14,8 @@ struct CharacterRowView: View {
             CachedAsyncImage(url: character.imageUrl()) { phase in
                 switch phase {
                 case .empty:
-                    ProgressView()
-                        .frame(width: 120, height: 120, alignment: .center)
+                    SquareImage(image: Image("character-placeholder"), size: 120, contentMode: .fill)
+                            .cornerRadius(5)
                 case .success(let image):
                     SquareImage(image: image, size: 120, contentMode: .fill)
                         .cornerRadius(5)

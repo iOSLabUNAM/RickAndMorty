@@ -21,7 +21,6 @@ struct CachedAsyncImage<Content>: View where Content: View {
 
     var body: some View {
         content(viewModel.phase)
-            .task { await viewModel.load() }
     }
 }
 
@@ -30,7 +29,7 @@ struct CachedAsyncImage_Previews: PreviewProvider {
         CachedAsyncImage(url: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg")! ) { phase in
             switch phase {
             case .empty:
-                ProgressView()
+                Image("character-placeholder")
             case .success(let image):
                 image
             default:
