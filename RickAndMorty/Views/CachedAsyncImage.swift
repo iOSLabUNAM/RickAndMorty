@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct CachedAsyncImage<Content>: View where Content: View {
-    @StateObject var viewModel: CachedAsyncImageViewModel
+    @ObservedObject var viewModel: CachedAsyncImageViewModel
     private let content: (AsyncImagePhase) -> Content
 
     init(
         url: URL?,
         @ViewBuilder content: @escaping (AsyncImagePhase) -> Content
     ) {
-        _viewModel = StateObject(wrappedValue: CachedAsyncImageViewModel(url: url))
+        _viewModel = ObservedObject(wrappedValue: CachedAsyncImageViewModel(url: url))
         self.content = content
     }
 
@@ -26,7 +26,7 @@ struct CachedAsyncImage<Content>: View where Content: View {
 
 struct CachedAsyncImage_Previews: PreviewProvider {
     static var previews: some View {
-        CachedAsyncImage(url: URL(string: "https://rickandmortyapi.com/api/character/avatar/1.jpeg")! ) { phase in
+        CachedAsyncImage(url: URL(string: "https://rickandmortyapi.com/api/character/avatar/20.jpeg")! ) { phase in
             switch phase {
             case .empty:
                 Image("character-placeholder")
