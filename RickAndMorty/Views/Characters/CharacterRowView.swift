@@ -34,6 +34,9 @@ struct CharacterRowView: View {
                     Text(character.species)
                 }
                 .font(.subheadline)
+                Text(character.origin?.name ?? "Unkown")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
         }
     }

@@ -12,18 +12,34 @@ struct UrlLocation: Codable {
     let url: String?
 }
 
+enum Gender: String, Codable, CaseIterable {
+    case all = "All"
+    case male = "Male"
+    case female = "Female"
+    case unknown = "unknown"
+    
+    func text() -> String {
+        return rawValue.capitalized
+    }
+}
+
 struct Character: Codable, Identifiable {
-    enum Status: String, Codable {
+    enum Status: String, Codable, CaseIterable {
+        case all = "All"
         case alive = "Alive"
         case dead = "Dead"
         case unknown = "unknown"
+
+        func text() -> String {
+            return rawValue.capitalized
+        }
     }
     let id: Int
     let name: String
     let imageUrlString: String
     let status: Status
     let species: String
-    let gender: String
+    let gender: Gender
     let type: String
     let location: UrlLocation?
     let origin: UrlLocation?

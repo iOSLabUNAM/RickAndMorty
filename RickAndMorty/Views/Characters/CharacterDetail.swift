@@ -23,11 +23,13 @@ struct CharacterDetail: View {
                             .resizable()
                             .scaledToFill()
                             .frame(height: 350)
+                            .clipped()
                 default:
                         Image(systemName: "xmark.icloud")
                             .resizable()
                             .scaledToFit()
                             .frame(height: 350)
+                            .clipped()
                         }
             }
             VStack(alignment: .leading) {
@@ -43,7 +45,7 @@ struct CharacterDetail: View {
                     Circle()
                         .frame(width: 15)
                         .foregroundColor(statusColor(character.status))
-                    Text("\(character.species) - \(character.gender)")
+                    Text("\(character.species) - \(character.gender.text())")
                     Spacer()
                 }
                 .font(.title2)
