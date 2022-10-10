@@ -17,7 +17,7 @@ enum Gender: String, Codable, CaseIterable {
     case male = "Male"
     case female = "Female"
     case unknown = "unknown"
-    
+
     func text() -> String {
         return rawValue.capitalized
     }

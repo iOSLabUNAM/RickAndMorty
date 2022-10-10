@@ -16,4 +16,6 @@ struct TvMazeEpisode: Codable, Identifiable {
     let season: Int
     let number: Int
     let image: Image?
+
+    var episode: String { "S\(String(format: "%2.2d", self.season))E\(String(format: "%2.2d", self.number))" }
 }

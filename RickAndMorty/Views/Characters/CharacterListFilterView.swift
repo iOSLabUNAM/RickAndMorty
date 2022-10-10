@@ -12,7 +12,7 @@ struct CharacterListFilterView: View {
     @EnvironmentObject var settingsStore: SettingsStore
     @State var selectedStatus: Character.Status = .all
     @State var onlyHuman: Bool = false
-    
+
     var body: some View {
         NavigationView {
             Form {

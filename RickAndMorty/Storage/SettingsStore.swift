@@ -16,17 +16,17 @@ class SettingsStore: ObservableObject {
     init() {
         UserDefaults.standard.register(defaults: [
             CharacerFilter.status.rawValue: "All",
-            CharacerFilter.onlyHuman.rawValue: false,
+            CharacerFilter.onlyHuman.rawValue: false
         ])
     }
-    
+
     @Published
     var characterFilterSelectedStatus: String = UserDefaults.standard.string(forKey: CharacerFilter.status.rawValue) ?? "All" {
         didSet {
             UserDefaults.standard.set(characterFilterSelectedStatus, forKey: CharacerFilter.status.rawValue)
         }
     }
-    
+
     @Published
     var characterFilterOnlyHuman: Bool = UserDefaults.standard.bool(forKey: CharacerFilter.onlyHuman.rawValue) {
         didSet {

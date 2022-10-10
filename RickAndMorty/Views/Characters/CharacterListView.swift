@@ -48,11 +48,11 @@ struct CharacterListView: View {
             await viewModel.load()
         }
     }
-    
+
     func shouldShowCharacter(character: Character) -> Bool {
         return shouldShowCharacterStatus(character: character) && shouldShowHumanCharacter(character: character)
     }
-    
+
     func shouldShowCharacterStatus(character: Character) -> Bool {
         let selectedStatus = Character.Status(rawValue: settingsStore.characterFilterSelectedStatus)
         if selectedStatus == .all {
@@ -61,14 +61,14 @@ struct CharacterListView: View {
             return character.status == selectedStatus
         }
     }
-    
-    func shouldShowHumanCharacter(character: Character) ->Bool {
+
+    func shouldShowHumanCharacter(character: Character) -> Bool {
         if settingsStore.characterFilterOnlyHuman {
             return character.species == "Human"
         } else {
             return true
         }
-        
+
     }
 }
 

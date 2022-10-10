@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EpisodeListView: View {
-    @StateObject var viewModel = EpisodeListViewModel()
+    @ObservedObject var viewModel = EpisodeListViewModel()
     var body: some View {
         NavigationView {
             List(viewModel.episodes) { episode in
@@ -18,10 +18,6 @@ struct EpisodeListView: View {
             }
             .listStyle(.plain)
             .navigationTitle("Episodes")
-        }
-        .task {
-            await viewModel.load()
-            await viewModel.loadTvMaze()
         }
     }
 }

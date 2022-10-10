@@ -49,17 +49,17 @@ struct CharacterDetail: View {
                     Spacer()
                 }
                 .font(.title2)
-                HStack{
+                HStack {
                     Text("Origin")
                         .fontWeight(.bold)
                     Text("\(character.origin?.name ?? "unkown")")
                 }
-                HStack{
+                HStack {
                     Text("Location")
                         .fontWeight(.bold)
                     Text("\(character.location?.name ?? "unkown")")
                 }
-                HStack{
+                HStack {
                     Text("Episodes")
                         .fontWeight(.bold)
                     Text("\(character.episodes.count)")

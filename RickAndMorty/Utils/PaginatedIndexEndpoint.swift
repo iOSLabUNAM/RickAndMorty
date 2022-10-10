@@ -7,6 +7,7 @@
 
 import Foundation
 import Amaca
+import Combine
 
 struct PaginatedList<T: Codable>: Codable {
     struct Info: Codable {
@@ -45,5 +46,12 @@ struct PaginatedListEndpoint<T> where T: Codable {
             #endif
             throw Amaca.EndpointError.invalidDecoding("Unable to decode response")
         }
+    }
+
+    func showPublisher(page: Int? = nil) -> AnyPublisher<PaginatedList<T>, Error> {
+        return client
+            .getPublisher(path: route, queryItems: ["page": "\(page ?? 1)"])
+            .decode(type: PaginatedList<T>.self, decoder: decoder)
+            .eraseToAnyPublisher()
     }
 }

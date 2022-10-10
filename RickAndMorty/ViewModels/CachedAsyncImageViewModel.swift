@@ -15,7 +15,7 @@ class CachedAsyncImageViewModel: ObservableObject {
     }
 
     @Published var phase: AsyncImagePhase
-    
+
     private let url: URL?
     private var manager: DataCacheManager = DataCache.shared
     private lazy var urlHash: String = {
@@ -37,7 +37,7 @@ class CachedAsyncImageViewModel: ObservableObject {
             self.phase = .success(image)
             return
         }
-        
+
         URLSession
             .shared
             .dataTaskPublisher(for: url)
