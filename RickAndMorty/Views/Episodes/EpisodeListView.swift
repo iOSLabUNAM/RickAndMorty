@@ -12,12 +12,9 @@ struct EpisodeListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.episodes) { episode in
-                VStack(alignment: .leading) {
-                    Text(episode.name)
-                        .font(.headline)
-                    Text(episode.episode)
-                        .font(.subheadline)
-                }
+                EpisodeCard(episode: episode)
+                    .frame(minHeight: 180)
+                    .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .navigationTitle("Episodes")

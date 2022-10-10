@@ -38,6 +38,7 @@
 		30F87C1B28CBF98700157848 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F87C1A28CBF98700157848 /* Episode.swift */; };
 		30F87C1D28CBF9FE00157848 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F87C1C28CBF9FE00157848 /* TestData.swift */; };
 		30F87C1F28CC028400157848 /* CharacterRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F87C1E28CC028400157848 /* CharacterRowView.swift */; };
+		30FE9F0728F4CDDD00FE509D /* EpisodeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE9F0628F4CDDD00FE509D /* EpisodeCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		30F87C1A28CBF98700157848 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		30F87C1C28CBF9FE00157848 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		30F87C1E28CC028400157848 /* CharacterRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRowView.swift; sourceTree = "<group>"; };
+		30FE9F0628F4CDDD00FE509D /* EpisodeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				30F87C1328CBF1E700157848 /* EpisodeListView.swift */,
+				30FE9F0628F4CDDD00FE509D /* EpisodeCard.swift */,
 			);
 			path = Episodes;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				30ED036128DE687D005948ED /* DataCache.swift in Sources */,
 				30F87C1028CBF19000157848 /* CharacterListView.swift in Sources */,
 				30F87C1B28CBF98700157848 /* Episode.swift in Sources */,
+				30FE9F0728F4CDDD00FE509D /* EpisodeCard.swift in Sources */,
 				30F87C1228CBF1B900157848 /* LocationListView.swift in Sources */,
 				30010EE628DE83FB00AF9383 /* EpisodeListViewModel.swift in Sources */,
 				3052054028DA84B9001F99F7 /* CharacterListViewModel.swift in Sources */,
