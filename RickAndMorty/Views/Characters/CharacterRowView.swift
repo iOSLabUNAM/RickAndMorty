@@ -20,7 +20,7 @@ struct CharacterRowView: View {
                     SquareImage(image: image, size: 120, contentMode: .fill)
                         .cornerRadius(5)
                 default:
-                    SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
+                    SquareImage(image: Image("character-placeholder"), size: 120, contentMode: .fit)
                 }
             }
             VStack(alignment: .leading) {

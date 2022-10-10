@@ -68,25 +68,29 @@ struct TestData {
             id: 1,
             name: "Pilot",
             airDate: "December 2, 2013",
-            episode: "S01E01"
+            episode: "S01E01",
+            imageUrlString: "https://static.tvmaze.com/uploads/images/original_untouched/292/730352.jpg"
         ),
         Episode(
             id: 2,
             name: "Lawnmower Dog",
             airDate: "December 9, 2013",
-            episode: "S01E02"
+            episode: "S01E02",
+            imageUrlString: "https://static.tvmaze.com/uploads/images/original_untouched/292/730780.jpg"
         ),
         Episode(
             id: 3,
             name: "Anatomy Park",
             airDate: "December 16, 2013",
-            episode: "S01E03"
+            episode: "S01E03",
+            imageUrlString: "https://static.tvmaze.com/uploads/images/original_untouched/15/37914.jpg"
         ),
         Episode(
             id: 4,
             name: "M. Night Shaym-Aliens!",
             airDate: "January 13, 2014",
-            episode: "S01E04"
+            episode: "S01E04",
+            imageUrlString: "https://static.tvmaze.com/uploads/images/original_untouched/15/37915.jpg"
         )
     ]
 }

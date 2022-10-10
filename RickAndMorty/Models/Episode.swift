@@ -13,8 +13,10 @@ struct Episode: Codable, Identifiable {
     let airDate: String
     let episode: String
     var imageUrlString: String?
-//    let created: String
-//    let characters: [String]
+    var imageUrl: URL? {
+        guard let url = self.imageUrlString else { return nil }
+        return URL(string: url)
+    }
 }
 
 extension Episode: Equatable {
