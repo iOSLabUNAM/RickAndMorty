@@ -9,6 +9,31 @@ import Foundation
 import Amaca
 import Combine
 
+extension Amaca {
+    struct TvMazeCacheDelegate: CacheResponseDelegate {
+        let manager = DataCache()
+        let cacheKey = "rick-and-morty-episodes.json"
+        
+        func willMakeRequest(urlRequest: URLRequest) {
+            // do something
+        }
+        
+        func fetchCachedRequest(urlRequest: URLRequest) -> Data? {
+            return manager.read(key: cacheKey)
+        }
+        
+        func didFinishRequestSuccessful(data: Data?) {
+            guard let data = data else { return }
+    
+            manager.write(key: cacheKey, data: data)
+        }
+        
+        func didFinishRequestUnsuccessful(urlRequest: URLRequest, data: Data?) {
+            // do something
+        }
+    }
+}
+
 class EpisodeListViewModel: ObservableObject {
     @Published var episodes: [Episode] = []
     @Published private var rawEpisodes: [Episode] = []
@@ -25,15 +50,19 @@ class EpisodeListViewModel: ObservableObject {
         self.apiClient = Amaca.Client(Api.rickAndMorty)
         self.endpoint = PaginatedListEndpoint<Episode>(client: self.apiClient, route: "/api/episode")
 
-        self.tvMazeClient = Amaca.Client(Api.tvMaze)
+        self.tvMazeClient = {
+            var client = Amaca.Client(Api.tvMaze)
+            client.cacheDelegate = Amaca.TvMazeCacheDelegate()
+            return client
+        }()
         self.tvMazeEndpoint = Amaca.Endpoint<TvMazeEpisode>(client: self.tvMazeClient, route: "/shows/216/episodes")
 
-        load()
+        fetch()
     }
 
-    func load() {
-        loadTvMaze()
-        loadRickAndMorty()
+    private func fetch() {
+        fetchTvMaze()
+        fetchRickAndMorty()
         Publishers
             .CombineLatest($rawEpisodes, $tvMazeEpisodes)
             .receive(on: RunLoop.main)
@@ -49,7 +78,7 @@ class EpisodeListViewModel: ObservableObject {
             .store(in: &cancellableSet)
     }
 
-    func loadTvMaze() {
+    private func fetchTvMaze() {
         tvMazeEndpoint
             .showPublisher()
             .receive(on: RunLoop.main)
@@ -61,7 +90,7 @@ class EpisodeListViewModel: ObservableObject {
             .store(in: &cancellableSet)
     }
 
-    func loadRickAndMorty() {
+    private func fetchRickAndMorty() {
         endpoint
             .showPublisher()
             .receive(on: RunLoop.main)
