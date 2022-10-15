@@ -13,21 +13,21 @@ extension Amaca {
     struct TvMazeCacheDelegate: CacheResponseDelegate {
         let manager = DataCache()
         let cacheKey = "rick-and-morty-episodes.json"
-        
+
         func willMakeRequest(urlRequest: URLRequest) {
             // do something
         }
-        
+
         func fetchCachedRequest(urlRequest: URLRequest) -> Data? {
             return manager.read(key: cacheKey)
         }
-        
+
         func didFinishRequestSuccessful(data: Data?) {
             guard let data = data else { return }
-    
+
             manager.write(key: cacheKey, data: data)
         }
-        
+
         func didFinishRequestUnsuccessful(urlRequest: URLRequest, data: Data?) {
             // do something
         }
@@ -100,6 +100,12 @@ class EpisodeListViewModel: ObservableObject {
                 self.rawEpisodes.append(contentsOf: response.results)
             }
             .store(in: &cancellableSet)
+    }
+
+    func seasonFilter(selectedSeason: String? = nil) -> [Episode] {
+        guard let season = selectedSeason else { return self.episodes }
+
+        return self.episodes.filter { $0.episode.hasPrefix(season) }
     }
 
     func isLast(episode: Episode) -> Bool {

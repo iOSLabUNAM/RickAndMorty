@@ -11,12 +11,14 @@ struct EpisodeListView: View {
     @ObservedObject var viewModel = EpisodeListViewModel()
     var body: some View {
         NavigationView {
-            List(viewModel.episodes) { episode in
-                EpisodeCard(episode: episode)
-                    .frame(minHeight: 180)
-                    .listRowSeparator(.hidden)
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(viewModel.seasonFilter(selectedSeason: "S01")) { episode in
+                        EpisodeCard(episode: episode)
+                            .frame(minWidth: 300, minHeight: 169)
+                    }
+                }
             }
-            .listStyle(.plain)
             .navigationTitle("Episodes")
         }
     }

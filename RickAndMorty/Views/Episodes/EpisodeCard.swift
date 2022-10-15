@@ -40,9 +40,14 @@ struct EpisodeCard: View {
                     .fontWeight(.semibold)
             }
             .foregroundColor(.white)
-            .padding([.horizontal, .bottom])
+            .padding()
         }
         .cornerRadius(10)
+        .overlay {
+            RoundedRectangle(cornerRadius: 10)
+               .stroke(Color("CeruleanBlue"), lineWidth: 2)
+               .padding([.top, .horizontal])
+        }
     }
 }
 
