@@ -15,9 +15,10 @@ struct EpisodeListView: View {
                 HStack {
                     ForEach(viewModel.seasonFilter(selectedSeason: "S01")) { episode in
                         EpisodeCard(episode: episode)
-                            .frame(minWidth: 300, minHeight: 169)
+                            .frame(width: 300)
                     }
                 }
+                .padding()
             }
             .navigationTitle("Episodes")
         }

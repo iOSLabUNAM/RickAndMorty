@@ -11,7 +11,7 @@ struct EpisodeCard: View {
     var episode: Episode
 
     var body: some View {
-        return ZStack(alignment: .bottomLeading) {
+        ZStack(alignment: .bottomLeading) {
             CachedAsyncImage(url: episode.imageUrl) { phase in
                 switch phase {
                 case .empty:
