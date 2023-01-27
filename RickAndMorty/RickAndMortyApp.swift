@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct RickAndMortyApp: App {
+    var settingsStore = SettingsStore()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(settingsStore)
         }
     }
 }
