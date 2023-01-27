@@ -10,44 +10,47 @@ import SwiftUI
 struct CharacterRowView: View {
     let character: Character
     var body: some View {
-        HStack {
-            CachedAsyncImage(url: character.imageUrl()) { phase in
-                switch phase {
-                case .empty:
-                    SquareImage(image: Image("character-placeholder"), size: 120, contentMode: .fill)
-                            .cornerRadius(5)
-                case .success(let image):
-                    SquareImage(image: image, size: 120, contentMode: .fill)
-                        .cornerRadius(5)
-                default:
-                    SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
+        VStack {
+            ZStack{
+                CachedAsyncImage(url: character.imageUrl()) { phase in
+                    switch phase {
+                    case .empty:
+                        SquareImage(image: Image("character-placeholder"), size: 120, contentMode: .fill)
+                                .cornerRadius(5)
+                    case .success(let image):
+                            SquareImage(image: image, size: 120, contentMode: .fill)
+                                .cornerRadius(20)
+                                
+                    default:
+                        SquareImage(image: Image(systemName: "xmark.icloud"), size: 120, contentMode: .fit)
+                    }
                 }
+                statusColor(character.status).opacity(0.7).cornerRadius(20)
+                    .frame(width: 120, height: 120)
             }
-            VStack(alignment: .leading) {
                 Text(character.name)
                     .font(.headline)
                     .fontWeight(.bold)
-                HStack {
-                    Circle()
-                        .foregroundColor(statusColor(character.status))
-                        .frame(width: 10)
-                    Text(character.species)
-                }
-                .font(.subheadline)
+                    .lineLimit(1)
+                
+                Text(character.species)
+                    .font(.subheadline)
+            
                 Text(character.origin?.name ?? "Unkown")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-            }
+                    .lineLimit(1)
+            
         }
     }
 
     func statusColor(_ status: Character.Status) -> Color {
         switch status {
-        case .alive: return .green
-        case .dead: return .black
-        default: return .gray
+        case .dead: return .gray
+        default: return .white.opacity(0)
         }
     }
+    
 }
 
 struct CharacterRowView_Previews: PreviewProvider {

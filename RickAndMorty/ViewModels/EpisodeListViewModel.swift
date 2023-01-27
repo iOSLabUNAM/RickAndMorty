@@ -17,6 +17,7 @@ class EpisodeListViewModel: ObservableObject {
     lazy var endpoint: PaginatedListEndpoint<Episode> = {
         return PaginatedListEndpoint<Episode>(client: apiClient, route: "/api/episode")
     }()
+    
     let tvMazeEndpoint = Amaca.Endpoint<TvMazeEpisode>(client: Amaca.Client(Api.tvMaze), route: "/shows/216/episodes")
 
     func load() async {
@@ -27,9 +28,16 @@ class EpisodeListViewModel: ObservableObject {
 
     func loadTvMaze() async {
         guard let tvMazeEpisodes = try? await tvMazeEndpoint.show() else { return }
-        debugPrint(tvMazeEpisodes.first?.image?.original)
+        
+        //let enco = JSONEncoder()
+        //let jsonData = try! enco.encode(tvMazeEpisodes.first?.image)
+        //debugPrint( String(data: jsonData, encoding: String.Encoding.utf8) ?? "fail" )
+        
+        //tvMazeEpisodes.forEach{ tv in
+        //    debugPrint(tv.image?.medium ?? "fail")
+        //}
 
-        self.tvMazeEpisodes = tvMazeEpisodes
+        self.tvMazeEpisodes.append(contentsOf: tvMazeEpisodes)
     }
 
     func isLast(episode: Episode) -> Bool {

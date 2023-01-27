@@ -9,8 +9,8 @@ import Foundation
 
 struct TvMazeEpisode: Codable, Identifiable {
     struct Image: Codable {
-        let medium: String
-        let original: String
+        let medium: String?
+        let original: String?
     }
     let id: Int
     let season: Int

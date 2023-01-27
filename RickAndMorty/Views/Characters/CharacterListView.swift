@@ -11,22 +11,34 @@ struct CharacterListView: View {
     @EnvironmentObject var settingsStore: SettingsStore
     @StateObject var viewModel = CharacterListViewModel()
     @State var showFilter: Bool = false
+    
+    private var data: [Int] = Array(1...20)
+    private let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
+    
     var body: some View {
         NavigationView {
-            List(viewModel.characters) { character in
-                if shouldShowCharacter(character: character) {
-                    NavigationLink {
-                        CharacterDetail(character: character)
-                    } label: {
-                        CharacterRowView(character: character)
-                            .listRowSeparator(.hidden)
-                            .onAppear {
-                                if viewModel.isLast(character: character) {
-                                    Task { await viewModel.load() }
+            ScrollView{
+                LazyVGrid(columns: columns) {
+                    ForEach(viewModel.characters) { item in
+                        NavigationLink{
+                            CharacterDetail(character: item)
+                        } label: {
+                            CharacterRowView(character: item)
+                                .listRowSeparator(.hidden)
+                                .onAppear {
+                                    if viewModel.isLast(character: item) {
+                                        Task { await viewModel.load() }
+                                    }
                                 }
-                            }
+                        }
+                        
+                        
                     }
-                    .listRowSeparator(.hidden)
                 }
             }
             .navigationTitle("Characters")

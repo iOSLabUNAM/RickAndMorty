@@ -34,7 +34,7 @@ struct Character: Codable, Identifiable {
             return rawValue.capitalized
         }
     }
-    let id: Int
+    var id: Int
     let name: String
     let imageUrlString: String
     let status: Status
@@ -46,6 +46,7 @@ struct Character: Codable, Identifiable {
     let episodes: [String]
     let url: String
 //    let created: String
+    
 
     func imageUrl() -> URL? {
        return URL(string: imageUrlString)
